@@ -25,6 +25,8 @@ class AlterFornecedoresSofdelete extends Migration
      */
     public function down()
     {
-        Schema::dropSoftDeletes();
+        Schema::table('fornecedores', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }
