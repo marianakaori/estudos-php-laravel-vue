@@ -17,10 +17,10 @@ class LogAcessoMiddleware
      */
     public function handle($request, Closure $next)
     {
-        //dd($request);
         $ip = $request->server->get('REMOTE_ADDR');
         $rota = $request->getRequestUri();
         LogAcesso::create(['log' => " $ip xyz requisitou a rota $rota"]);
-        return Response('paramos aqui');
+
+        return $next($request);
     }
 }
